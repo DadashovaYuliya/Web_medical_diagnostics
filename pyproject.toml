@@ -15,8 +15,8 @@ psycopg2-binary = "^2.9.10"
 pillow = "^11.2.1"
 black = "^25.1.0"
 djangorestframework-simplejwt = "^5.5.0"
-gunicorn
-django-redis
+gunicorn = "^23.0.0"
+django-redis = "^5.4.0"
 
 
 [tool.poetry.group.lint.dependencies]
