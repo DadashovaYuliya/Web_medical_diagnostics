@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+  <h1>Медицинская диагностика "DYA"</h1>
+  <h3>О компании "DYA"</h3>
+  <p>Компания "DYA" — это современная медицинская лаборатория, специализирующаяся на высокоточной диагностике и комплексных исследованиях. Основанная с целью обеспечить пациентов качественными и быстрыми результатами, мы используем передовые технологии и инновационное оборудование для проведения широкого спектра лабораторных анализов.</p>
+
+  <h3>Миссия компании</h3>
+  <p>Обеспечить здоровье и благополучие наших клиентов, предоставляя точные, своевременные и доступные диагностические услуги.</p>
+
+  <!-- Услуги -->
+<section id="services">
+  <div class="my-3 p-3 bg-body rounded shadow-sm">
+    <h6 class="border-bottom pb-2 mb-0">Наши услуги</h6>
+    <div class="d-flex text-body-secondary pt-3">
+      <svg aria-label="Placeholder: 32x32" class="bd-placeholder-img flex-shrink-0 me-2 rounded" height="32"
+           preserveAspectRatio="xMidYMid slice" role="img" width="32" xmlns="http://www.w3.org/2000/svg">
+        <title>Placeholder</title>
+        <rect width="100%" height="100%" fill="#007bff"></rect>
+      </svg>
+      <div class="pb-3 mb-0 small lh-sm border-bottom w-100">
+        {% if services %}
+          {% for service in services %}
+          <div class="d-flex justify-content-between">
+            <strong class="text-gray-dark">{{ service.name }}</strong>
+            <a href="{% url 'medic:services_detail' service.pk %}">Подробнее</a>
+          </div>
+          {% endfor %}
+        {% else %}
+          <p>Нет доступных услуг.</p>
+        {% endif %}
+      </div>
+    </div>
+    <small class="d-block text-end mt-3"><a href="{% url 'medic:services_list' %}">Каталог услуг</a></small>
+  </div>
+</section>
+
+  <section id="contacts">
+    <h3>Контактная информация</h3>
+    <a href="{% url 'medic:contacts' %}">Найти подробную контактную информацию и оставить обращение Вы можете здесь.</a>
+  </section>
+</div>
+{% endblock %}

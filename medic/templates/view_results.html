@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<h3>Ваши записи на прием</h3>
+<a href="{% url 'medic:appointments' %}">Записаться на прием</a>
+<ul>
+{% for appointment in appointments %}
+    <li>
+        {{ appointment.date_time }} - {{ appointment.service.name }}<br>
+
+        {% if appointment.result %}
+            <strong>Результат диагностики:</strong> {{ appointment.result.result }}
+        {% else %}
+            <em>Результаты еще не доступны</em>
+        {% endif %}
+    </li>
+{% empty %}
+    <li>Нет записей</li>
+{% endfor %}
+</ul>
+
+<h2>Результаты диагностики</h2>
+<ul>
+{% for appointment in appointments_with_results %}
+  <li>
+      <strong>{{ appointment.service.name }}</strong><br>
+      Дата приема: {{ appointment.date_time }}<br>
+      Диагноз: {{ appointment.result.result }}
+  </li>
+{% empty %}
+  <li>Нет доступных результатов диагностики.</li>
+{% endfor %}
+</ul>
+{% endblock %}

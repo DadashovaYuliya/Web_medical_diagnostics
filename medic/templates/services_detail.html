@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load my_tags %}
+{% block content %}
+<div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="col">
+            <div class="card shadow-sm">
+                <img src="{{ service.image | media_filter }}" class="card-img-top" alt="Нет изображения">
+                <div class="card-body">
+                    <h5 class="card-title">{{ service.name }}</h5>
+                    <p class="card-text">Описание: {{ service.description | truncatechars:100 }}</p>
+                    <p class="card-text">Цена: {{ service.price }} руб.</p>
+                    <a href="{% url 'medic:services_list' %}" class="btn btn-primary">Назад</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
